@@ -18,6 +18,7 @@ Select it and click **Default** to keep it.
 ### Ghostty
 
 ```sh
+mkdir -p ~/.config/ghostty/themes
 cp ghostty/liquid-glass-dark ~/.config/ghostty/themes/
 ```
 
@@ -50,11 +51,11 @@ set per hue so no slot jumps forward of the others. Everything clears 6.5:1 agai
 background. Blue and cyan sit at the sRGB gamut edge and cannot go further without losing
 lightness.
 
-### Translucency is real, not painted
+### The translucency is a property of the profile
 
 The background color carries an alpha channel and `BackgroundBlur` sets the frost, so what
-is behind the window shows through. This is a property of the profile, not a screenshot
-effect.
+is behind the window shows through. Nothing is painted on; the window composites against
+the live desktop.
 
 ## Palette
 
@@ -62,10 +63,13 @@ effect.
 | --- | --- |
 | Background | `#191C22` @ 72% |
 | Text | `#ECEEF3` |
-| Bold | `#FFFFFF` |
+| Bold | `#FFFFFF` — Terminal.app only |
 | Cursor | `#D97757` |
 | Selection | `#8A9BB8` @ 35% |
 | Dim / comments | `#707888` |
+
+Ghostty has no separate bold color and takes no alpha on selection, so it gets the
+selection already composited over the background as `#3D4656`.
 
 | Slot | Normal | Bright |
 | --- | --- | --- |
