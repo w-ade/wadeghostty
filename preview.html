@@ -1,0 +1,102 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Liquid Glass — Terminal.app theme preview</title>
+<style>
+  :root { --mono: "SF Mono", ui-monospace, Menlo, monospace; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--mono); }
+
+  /* the "desktop" the glass sits on, so translucency is visible */
+  .plate { padding: 40px; display: grid; gap: 40px; }
+  .plate.dark  { background: linear-gradient(135deg,#3b2a4d,#1d3350 45%,#2c4c4a); }
+  .plate.light { background: linear-gradient(135deg,#ffe3c9,#d9e8ff 45%,#e7dcff); }
+
+  .win {
+    width: 720px; border-radius: 12px; overflow: hidden;
+    backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
+    box-shadow: 0 24px 60px rgba(0,0,0,.35), 0 0 0 .5px rgba(0,0,0,.25);
+  }
+  .bar { height: 28px; display: flex; align-items: center; gap: 6px; padding: 0 10px;
+         font: 500 11px/1 -apple-system, system-ui, sans-serif; }
+  .bar b { flex: 1; text-align: center; font-weight: 500; opacity: .75; }
+  .dot { width: 11px; height: 11px; border-radius: 50%; }
+  pre { margin: 0; padding: 14px 16px 18px; font: 12.5px/1.62 var(--mono); white-space: pre-wrap; }
+  .grid { display: grid; grid-template-columns: repeat(8, 1fr); margin: 0 16px 16px; border-radius: 6px; overflow: hidden; }
+  .grid i { height: 20px; display: block; }
+  .cur { display: inline-block; width: .6em; height: 1.15em; vertical-align: -.22em; }
+  .label { padding: 10px 16px 0; font: 10px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; opacity: .55; }
+
+  /* dark palette */
+  .dark .win { background: rgba(25,28,34,.72); }
+  .dark pre, .dark .bar { color: #ECEEF3; }
+  .dark .bar { background: rgba(255,255,255,.06); }
+  .dark .b  { color: #FFFFFF; font-weight: 600; }
+  .dark .k  { color: #707888; }
+  .dark .r  { color: #F18080; } .dark .g { color: #85D796; } .dark .y { color: #EFD183; }
+  .dark .bl { color: #84B6F4; } .dark .m { color: #C4A1F0; } .dark .c { color: #83D9DE; }
+  .dark .cur { background: #D97757; color: #191C22; }
+  .dark .sel { background: rgba(138,155,184,.35); }
+
+  /* light palette */
+  .light .win { background: rgba(244,246,250,.76); }
+  .light pre, .light .bar { color: #23272F; }
+  .light .bar { background: rgba(0,0,0,.05); }
+  .light .b  { color: #0B0D12; font-weight: 600; }
+  .light .k  { color: #8B93A0; }
+  .light .r  { color: #C5453F; } .light .g { color: #2F8B4A; } .light .y { color: #8E7418; }
+  .light .bl { color: #2F6FCB; } .light .m { color: #7D4FC0; } .light .c { color: #20757D; }
+  .light .cur { background: #D97757; color: #F4F6FA; }
+  .light .sel { background: rgba(122,140,168,.28); }
+</style>
+
+<div class="plate dark" id="dark">
+  <div class="win">
+    <div class="bar"><span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span><b>Liquid Glass Dark — 80×24</b></div>
+<pre><span class="g">~/Projects/liquid-glass-theme</span> <span class="bl">main</span> <span class="k">✓</span>
+<span class="m">❯</span> osascript -l JavaScript make-theme.js
+<span class="k">Liquid Glass Dark.terminal   ok=</span><span class="g">true</span>
+<span class="k">Liquid Glass Light.terminal  ok=</span><span class="g">true</span>
+
+<span class="m">❯</span> git status --short
+<span class="g">M </span> make-theme.js
+<span class="r">??</span> preview.html
+
+<span class="m">❯</span> npm run build
+<span class="y">warn</span>  two peer deps unmet
+<span class="r">error</span> <span class="b">TypeError</span>: cannot read <span class="c">'glass'</span> of undefined
+<span class="k">      at render (src/lens.ts:</span><span class="y">42</span><span class="k">:9)</span>
+
+<span class="m">❯</span> <span class="sel">selected text reads clean</span> <span class="cur"></span></pre>
+    <div class="label">16-color ramp</div>
+    <div class="grid">
+      <i style="background:#2E333C"></i><i style="background:#F18080"></i><i style="background:#85D796"></i><i style="background:#EFD183"></i><i style="background:#84B6F4"></i><i style="background:#C4A1F0"></i><i style="background:#83D9DE"></i><i style="background:#D6DAE2"></i>
+      <i style="background:#707888"></i><i style="background:#FFA3A0"></i><i style="background:#ADEBBA"></i><i style="background:#FBE7AC"></i><i style="background:#ABCEFA"></i><i style="background:#DBC2F8"></i><i style="background:#ACEBEE"></i><i style="background:#F7F8FB"></i>
+    </div>
+  </div>
+</div>
+
+<div class="plate light" id="light">
+  <div class="win">
+    <div class="bar"><span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span><b>Liquid Glass Light — 80×24</b></div>
+<pre><span class="g">~/Projects/liquid-glass-theme</span> <span class="bl">main</span> <span class="k">✓</span>
+<span class="m">❯</span> osascript -l JavaScript make-theme.js
+<span class="k">Liquid Glass Dark.terminal   ok=</span><span class="g">true</span>
+<span class="k">Liquid Glass Light.terminal  ok=</span><span class="g">true</span>
+
+<span class="m">❯</span> git status --short
+<span class="g">M </span> make-theme.js
+<span class="r">??</span> preview.html
+
+<span class="m">❯</span> npm run build
+<span class="y">warn</span>  two peer deps unmet
+<span class="r">error</span> <span class="b">TypeError</span>: cannot read <span class="c">'glass'</span> of undefined
+<span class="k">      at render (src/lens.ts:</span><span class="y">42</span><span class="k">:9)</span>
+
+<span class="m">❯</span> <span class="sel">selected text reads clean</span> <span class="cur"></span></pre>
+    <div class="label">16-color ramp</div>
+    <div class="grid">
+      <i style="background:#2B303A"></i><i style="background:#C5453F"></i><i style="background:#2F8B4A"></i><i style="background:#8E7418"></i><i style="background:#2F6FCB"></i><i style="background:#7D4FC0"></i><i style="background:#20757D"></i><i style="background:#6B7280"></i>
+      <i style="background:#8B93A0"></i><i style="background:#A93531"></i><i style="background:#23713B"></i><i style="background:#735C10"></i><i style="background:#1F58AC"></i><i style="background:#663CA4"></i><i style="background:#155E65"></i><i style="background:#4B515C"></i>
+    </div>
+  </div>
+</div>
