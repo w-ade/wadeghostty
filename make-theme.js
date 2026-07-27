@@ -26,17 +26,18 @@ const themes = {
   },
   'Liquid Glass Light': {
     colors: {
-      BackgroundColor: ['#F4F6FA', 0.58], TextColor: '#23272F', BoldTextColor: '#0B0D12',
-      CursorColor: '#D97757', SelectionColor: ['#7A8CA8', 0.28],
+      BackgroundColor: ['#FFFFFF', 0.38], TextColor: '#101318', BoldTextColor: '#000000',
+      CursorColor: '#D97757', SelectionColor: ['#6B82A6', 0.32],
       ANSIBlackColor: '#2B303A', ANSIRedColor: '#C5453F', ANSIGreenColor: '#2F8B4A',
       ANSIYellowColor: '#8E7418', ANSIBlueColor: '#2F6FCB', ANSIMagentaColor: '#7D4FC0',
       ANSICyanColor: '#20757D', ANSIWhiteColor: '#6B7280',
-      ANSIBrightBlackColor: '#8B93A0', ANSIBrightRedColor: '#A93531', ANSIBrightGreenColor: '#23713B',
+      ANSIBrightBlackColor: '#5F6672', ANSIBrightRedColor: '#A93531', ANSIBrightGreenColor: '#23713B',
       ANSIBrightYellowColor: '#735C10', ANSIBrightBlueColor: '#1F58AC', ANSIBrightMagentaColor: '#663CA4',
       ANSIBrightCyanColor: '#155E65', ANSIBrightWhiteColor: '#4B515C',
     },
-    // thinner than the dark plate — dark text carries on a lighter wash
-    blur: 0.62,
+    // no blur at all. Blur is what turns a light plate milky — a dark plate hides the
+    // gray mush, a light one shows it. Clear pane, thin wash, near-black text.
+    blur: 0.0,
   },
 };
 

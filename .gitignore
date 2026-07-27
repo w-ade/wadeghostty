@@ -1,0 +1,4 @@
+# Refractive preview rig — the lens engine is derived from Aave's shipped source,
+# so it stays local. The rendered PNGs are committed; the page that makes them isn't.
+glass.js
+preview-glass.html
