@@ -1,12 +1,13 @@
 # Liquid Glass
 
-A translucent theme for macOS Terminal.app — dark and light. Generated from one small
-JXA script, so the palette lives in readable source instead of a binary plist.
+A translucent terminal theme for macOS — dark and light, for **Terminal.app** and
+**Ghostty**. The Terminal profiles are generated from one small JXA script, so the
+palette lives in readable source instead of a binary plist.
 
 ![Liquid Glass Dark](preview-dark.png)
 ![Liquid Glass Light](preview-light.png)
 
-## Install
+## Install — Terminal.app
 
 ```sh
 open "Liquid Glass Dark.terminal"
@@ -18,6 +19,31 @@ Select one and click **Default** to keep it.
 
 The translucency is real: the background color carries alpha and `BackgroundBlur` sets
 the frost, so what's behind the window shows through.
+
+## Install — Ghostty
+
+```sh
+cp ghostty/liquid-glass-* ~/.config/ghostty/themes/
+```
+
+Then in `~/.config/ghostty/config`:
+
+```
+theme = liquid-glass-dark
+```
+
+or follow the macOS appearance:
+
+```
+theme = light:liquid-glass-light,dark:liquid-glass-dark
+```
+
+Reload with **⌘⇧,**.
+
+Each theme file carries its own `background-opacity` and `background-blur-radius`, so
+the pair keeps its asymmetry — dark frosted, light clear. **Do not also set those two
+keys in `config`**: a value there wins over the theme file and flattens both variants to
+the same glass.
 
 ## Palette
 
@@ -51,7 +77,8 @@ osascript -l JavaScript make-theme.js
 ```
 
 Edit the `themes` object in `make-theme.js` — hex strings, or `['#RRGGBB', alpha]` for
-the translucent slots — and re-run. Both `.terminal` files are rewritten in place.
+the translucent slots — and re-run. Both `.terminal` files are rewritten in place. The
+Ghostty files in `ghostty/` are hand-maintained; keep them in step by hand.
 
 Terminal caches an imported profile, so a regenerated file will not update a profile you
 already imported. Delete the old one in **Settings → Profiles** first, then re-open the
