@@ -1,12 +1,12 @@
 # Liquid Glass
 
-A translucent dark terminal theme for macOS — for **Terminal.app** and **Ghostty**. The
+A translucent dark terminal theme for macOS — **Terminal.app** and **Ghostty**. The
 Terminal profile is generated from one small JXA script, so the palette lives in readable
 source instead of a binary plist.
 
-![Liquid Glass Dark](preview-dark.png)
+## Install
 
-## Install — Terminal.app
+### Terminal.app
 
 ```sh
 open "Liquid Glass Dark.terminal"
@@ -15,10 +15,7 @@ open "Liquid Glass Dark.terminal"
 It opens a new window using the profile and adds it to **Terminal → Settings → Profiles**.
 Select it and click **Default** to keep it.
 
-The translucency is real: the background color carries alpha and `BackgroundBlur` sets
-the frost, so what's behind the window shows through.
-
-## Install — Ghostty
+### Ghostty
 
 ```sh
 cp ghostty/liquid-glass-dark ~/.config/ghostty/themes/
@@ -35,12 +32,35 @@ Reload with **⌘⇧,**.
 The theme file carries its own `background-opacity` and `background-blur-radius`. **Do not
 also set those two keys in `config`** — a value there wins over the theme file.
 
+## Design notes
+
+### Frost is why this is dark only
+
+Blur averages the desktop behind the window into flat gray mush. A dark plate hides that
+mush and reads rich; a light plate reveals it and turns milky. A light variant shipped in
+the first two commits and was dropped for this reason.
+
+### The color slots sit at the sRGB primaries and secondaries
+
+Red 29°, yellow 100°, green 142°, cyan 195°, blue 262°, magenta 328° in OKLCH. Landing on
+the named hues means each slot is identified on sight rather than read as a pastel.
+
+Chroma is carried as far as the plate takes it before the color turns neon. Lightness is
+set per hue so no slot jumps forward of the others. Everything clears 6.5:1 against the
+background. Blue and cyan sit at the sRGB gamut edge and cannot go further without losing
+lightness.
+
+### Translucency is real, not painted
+
+The background color carries an alpha channel and `BackgroundBlur` sets the frost, so what
+is behind the window shows through. This is a property of the profile, not a screenshot
+effect.
+
 ## Palette
 
 | Role | Value |
 | --- | --- |
 | Background | `#191C22` @ 72% |
-| Blur | 0.62 — frosted |
 | Text | `#ECEEF3` |
 | Bold | `#FFFFFF` |
 | Cursor | `#D97757` |
@@ -49,23 +69,18 @@ also set those two keys in `config`** — a value there wins over the theme file
 
 | Slot | Normal | Bright |
 | --- | --- | --- |
+| Black | `#2E333C` | `#707888` |
 | Red | `#FF7666` | `#FFA497` |
 | Green | `#74DD6A` | `#A3F09B` |
 | Yellow | `#ECD64C` | `#FAEA8B` |
 | Blue | `#88B2FF` | `#AFCCFF` |
 | Magenta | `#EE88EB` | `#F9B3F6` |
 | Cyan | `#48E1E1` | `#8DF2F1` |
+| White | `#D6DAE2` | `#F7F8FB` |
 
-The color slots sit at the sRGB primary and secondary hues — red 29°, yellow 100°,
-green 142°, cyan 195°, blue 262°, magenta 328° in OKLCH — so each one is named on sight
-rather than read as a pastel. Chroma is carried as far as the plate takes before the
-color turns neon; lightness is set per hue so no slot jumps forward of the others.
-Everything clears 6.5:1 against the background. Blue and cyan sit at the sRGB gamut
-edge and cannot go further without losing lightness.
-
-Frost is the reason this is a dark theme only. Blur averages the desktop behind the
-window into flat gray mush; a dark plate hides that mush and reads rich, where a light
-plate reveals it and turns milky.
+Blur is expressed in different units by each terminal and the two are not
+interchangeable: Terminal.app takes `BackgroundBlur = 0.62` on a 0–1 scale, Ghostty takes
+`background-blur-radius = 20` in pixels.
 
 ## Regenerate
 
@@ -73,26 +88,22 @@ plate reveals it and turns milky.
 osascript -l JavaScript make-theme.js
 ```
 
-Edit the `themes` object in `make-theme.js` — hex strings, or `['#RRGGBB', alpha]` for
-the translucent slots — and re-run. `Liquid Glass Dark.terminal` is rewritten in place.
-The Ghostty file in `ghostty/` is hand-maintained; keep it in step by hand.
+Edit the `themes` object in `make-theme.js` — hex strings, or `['#RRGGBB', alpha]` for the
+translucent slots — and re-run. `Liquid Glass Dark.terminal` is rewritten in place.
 
-Terminal caches an imported profile, so a regenerated file will not update a profile you
-already imported. Delete the old one in **Settings → Profiles** first, then re-open the
-file. Do not try to change the glass through Terminal's AppleScript `background color` —
-that API silently drops the alpha channel and leaves the profile opaque.
+Three things to know before editing:
 
-## Previews
+- The output directory is hardcoded to `~/Workshop/liquid-glass-theme` at the bottom of
+  `make-theme.js`. Change that line if the repo lives elsewhere.
+- The Ghostty file in `ghostty/` is hand-maintained. The generator does not touch it; keep
+  it in step by hand.
+- Terminal caches an imported profile, so a regenerated file will not update a profile you
+  already imported. Delete the old one in **Settings → Profiles** first, then re-open the
+  file.
 
-The screenshot above is not a `backdrop-filter` fake — the window plate is refracted
-through a real `feDisplacementMap` lens, with chroma fringe at the rim, a baked specular
-highlight, and blur matched to the profile's actual `BackgroundBlur`. Technique:
-[Aave — Building glass for the web](https://aave.com/design/building-glass-for-the-web).
-
-The page that renders it is kept out of this repo; its lens engine is derived from
-Aave's shipped source and isn't mine to redistribute.
+Do not try to change the glass through Terminal's AppleScript `background color` — that
+API silently drops the alpha channel and leaves the profile opaque.
 
 ## License
 
-MIT — see [LICENSE](LICENSE). Covers the theme and the generator, not the glass
-technique referenced above.
+MIT — see [LICENSE](LICENSE).
