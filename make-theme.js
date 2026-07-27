@@ -26,7 +26,7 @@ const themes = {
   },
   'Liquid Glass Light': {
     colors: {
-      BackgroundColor: ['#F4F6FA', 0.76], TextColor: '#23272F', BoldTextColor: '#0B0D12',
+      BackgroundColor: ['#F4F6FA', 0.58], TextColor: '#23272F', BoldTextColor: '#0B0D12',
       CursorColor: '#D97757', SelectionColor: ['#7A8CA8', 0.28],
       ANSIBlackColor: '#2B303A', ANSIRedColor: '#C5453F', ANSIGreenColor: '#2F8B4A',
       ANSIYellowColor: '#8E7418', ANSIBlueColor: '#2F6FCB', ANSIMagentaColor: '#7D4FC0',
@@ -35,7 +35,7 @@ const themes = {
       ANSIBrightYellowColor: '#735C10', ANSIBrightBlueColor: '#1F58AC', ANSIBrightMagentaColor: '#663CA4',
       ANSIBrightCyanColor: '#155E65', ANSIBrightWhiteColor: '#4B515C',
     },
-    // light glass needs a touch more body to stay readable
+    // thinner than the dark plate — dark text carries on a lighter wash
     blur: 0.62,
   },
 };

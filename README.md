@@ -23,7 +23,7 @@ carries alpha, so what's behind the window shows through.
 
 | Role | Dark | Light |
 | --- | --- | --- |
-| Background | `#191C22` @ 72% | `#F4F6FA` @ 76% |
+| Background | `#191C22` @ 72% | `#F4F6FA` @ 58% |
 | Text | `#ECEEF3` | `#23272F` |
 | Bold | `#FFFFFF` | `#0B0D12` |
 | Cursor | `#D97757` | `#D97757` |
@@ -31,7 +31,8 @@ carries alpha, so what's behind the window shows through.
 | Dim / comments | `#707888` | `#8B93A0` |
 
 Both share the same hues; only lightness moves. The cursor is the one constant across
-the pair.
+the pair. The light plate is the thinner of the two — dark text carries on a lighter wash,
+so more of the desktop comes through.
 
 One deliberate break from convention in the light theme: the **bright** ANSI slots go
 *darker* rather than lighter. Brighter-than-near-white is invisible, so "bright" is read
