@@ -1,5 +1,4 @@
 # Refractive preview rig — the lens engine is derived from Aave's shipped source,
-# so it stays local. The repo ships no screenshots, so the renders stay local too.
+# so it stays local. The screenshot in the README is a real capture, not a render.
 glass.js
 preview-glass.html
-preview-*.png
