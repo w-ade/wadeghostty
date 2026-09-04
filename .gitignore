@@ -2,3 +2,6 @@
 # so it stays local. The screenshot in the README is a real capture, not a render.
 glass.js
 preview-glass.html
+
+# macOS
+.DS_Store
